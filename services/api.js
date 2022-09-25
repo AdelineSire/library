@@ -5,6 +5,9 @@ export const getBooks = async () => {
 		const data = await getRequest.json();
 		return data;
 	} catch (error) {
-		console.log({ error });
+		return {
+			errorMessage:
+				'Un problème est survenu lors du chargement de la bibliothèque',
+		};
 	}
 };

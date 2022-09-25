@@ -1,10 +1,9 @@
 import Image from 'next/future/image';
 
 const BookCard = ({ book }) => {
-	console.log({ book });
 	const { isbn, title, price, cover, synopsis } = book;
 	const alt = 'Couverture du livre ' + title;
-	const truncatedSynopsis = synopsis[0].slice(0, 148) + ' ...';
+	const truncatedSynopsis = synopsis[0].slice(0, 132) + ' ...';
 
 	return (
 		<div className='shadow-xl card lg:card-side bg-base-100'>
@@ -19,7 +18,7 @@ const BookCard = ({ book }) => {
 				</p>
 				<p className='text-justify'>{truncatedSynopsis}</p>
 				<div className='items-center justify-center gap-8 pt-4 card-actions'>
-					<span className='font-bold'>{price} €</span>
+					<span className='font-bold text-neutral'>{price} €</span>
 					<button className='btn btn-primary'>Ajouter au panier</button>
 				</div>
 			</div>
