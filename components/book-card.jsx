@@ -4,7 +4,7 @@ const BookCard = ({ book }) => {
 	console.log({ book });
 	const { isbn, title, price, cover, synopsis } = book;
 	const alt = 'Couverture du livre ' + title;
-	const truncatedSynopsis = synopsis[0].slice(0, 100) + ' ...';
+	const truncatedSynopsis = synopsis[0].slice(0, 148) + ' ...';
 
 	return (
 		<div className='shadow-xl card lg:card-side bg-base-100'>
@@ -17,7 +17,7 @@ const BookCard = ({ book }) => {
 					<span className='font-semibold'>ISBN : </span>
 					{isbn}
 				</p>
-				<p className=''>{truncatedSynopsis}</p>
+				<p className='text-justify'>{truncatedSynopsis}</p>
 				<div className='items-center justify-center gap-8 pt-4 card-actions'>
 					<span className='font-bold'>{price} €</span>
 					<button className='btn btn-primary'>Ajouter au panier</button>
