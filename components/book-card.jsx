@@ -1,9 +1,17 @@
+import { useContext } from 'react';
+
 import Image from 'next/future/image';
 
+import { CartContext } from '../contexts/cart.context';
+
 const BookCard = ({ book }) => {
+	const { addItemToCart } = useContext(CartContext);
+
 	const { isbn, title, price, cover, synopsis } = book;
 	const alt = 'Couverture du livre ' + title;
 	const truncatedSynopsis = synopsis[0].slice(0, 132) + ' ...';
+
+	const addProductToCart = () => addItemToCart(book);
 
 	return (
 		<div className='shadow-xl card lg:card-side bg-base-100'>
@@ -19,7 +27,9 @@ const BookCard = ({ book }) => {
 				<p className='text-justify'>{truncatedSynopsis}</p>
 				<div className='items-center justify-center gap-8 pt-4 card-actions'>
 					<span className='font-bold text-neutral'>{price} €</span>
-					<button className='btn btn-primary'>Ajouter au panier</button>
+					<button onClick={addProductToCart} className='btn btn-primary'>
+						Ajouter au panier
+					</button>
 				</div>
 			</div>
 		</div>
