@@ -1,4 +1,4 @@
-const getBooks = async () => {
+export const getBooks = async () => {
 	const url = 'http://henri-potier.xebia.fr/books';
 	try {
 		const getRequest = await fetch(url);
@@ -11,5 +11,3 @@ const getBooks = async () => {
 		};
 	}
 };
-
-export default getBooks;
