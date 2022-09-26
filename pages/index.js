@@ -5,7 +5,7 @@ import SearchBox from '../components/searchbox';
 import BookCardsList from '../components/book-cards-list';
 import Spinner from '../components/icons/Spinner';
 
-import { getBooks } from '../services/api';
+import { getBooks } from '../api/getBooks';
 
 const Home = () => {
 	const [loading, setLoading] = useState(true);
