@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useRouter } from 'next/router';
 
 import ShoppingBagIcon from './icons/shopping-bag-icon';
 
@@ -6,6 +7,7 @@ import { CartContext } from '../contexts/cart.context';
 
 const CartDropdown = () => {
 	const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
+	const router = useRouter();
 
 	const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
@@ -25,7 +27,10 @@ const CartDropdown = () => {
 					<div className='card-body'>
 						<span className='text-lg font-bold'>{cartCount} Articles</span>
 						<div className='card-actions'>
-							<button className='btn btn-primary btn-block'>
+							<button
+								onClick={() => router.push('/cart')}
+								className='btn btn-primary btn-block'
+							>
 								Voir le panier
 							</button>
 						</div>
