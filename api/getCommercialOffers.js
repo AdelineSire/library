@@ -1,9 +1,10 @@
 const getCommercialOffers = async (isbnList) => {
-	const url = `http://henri-poitier.xebia/books/${isbnList}/commercialOffers`;
+	const url = `http://henri-potier.xebia.fr/books/${isbnList}/commercialOffers`;
+
 	try {
 		const getRequest = await fetch(url);
 		const data = await getRequest.json();
-		return data;
+		return data.offers;
 	} catch (error) {
 		console.log({ error });
 	}
