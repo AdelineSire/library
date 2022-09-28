@@ -1,6 +1,6 @@
 import calculateBetterPrice from '../lib/calculateBetterPrice';
 
-it('should return better price', () => {
+test('Returns better price', () => {
 	const cartSum = 65;
 	const offers = [
 		{
