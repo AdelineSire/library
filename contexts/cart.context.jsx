@@ -2,6 +2,8 @@ import { createContext, useState, useEffect } from 'react';
 
 import addCartItem from '../lib/addCartItem';
 import calculateCartSum from '../lib/calculateCartSum';
+import calculateBetterPrice from '../lib/calculateBetterPrice';
+import getCommercialOffers from '../api/getCommercialOffers';
 
 export const CartContext = createContext({
 	isCartOpen: false,
@@ -10,6 +12,8 @@ export const CartContext = createContext({
 	addItemToCart: () => {},
 	cartCount: 0,
 	cartSum: 0,
+	cartDiscount: 0,
+	cartTotal: 0,
 });
 
 export const CartProvider = ({ children }) => {
@@ -17,6 +21,8 @@ export const CartProvider = ({ children }) => {
 	const [cartItems, setCartItems] = useState([]);
 	const [cartCount, setCartCount] = useState(0);
 	const [cartSum, setCartSum] = useState(0);
+	const [cartDiscount, setCartDiscount] = useState(0);
+	const [cartTotal, setCartTotal] = useState(0);
 
 	// Each time the cartItems array changes
 	useEffect(() => {
@@ -31,6 +37,18 @@ export const CartProvider = ({ children }) => {
 		if (newCartCount !== 0) {
 			const newSum = calculateCartSum(cartItems);
 			setCartSum(newSum);
+
+			// Create a list of isbn formated to call commercial offers api
+			const isbnList = cartItems.map((cartItem) => cartItem.isbn);
+			const formatedIsbnList = isbnList.join(',');
+
+			const calculateCart = async () => {
+				const offers = await getCommercialOffers(formatedIsbnList);
+				const betterPrice = calculateBetterPrice(newSum, offers);
+				setCartTotal(betterPrice);
+				setCartDiscount(newSum - betterPrice);
+			};
+			calculateCart();
 		}
 	}, [cartItems]);
 
@@ -46,6 +64,8 @@ export const CartProvider = ({ children }) => {
 		cartItems,
 		cartCount,
 		cartSum,
+		cartDiscount,
+		cartTotal,
 	};
 
 	return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
