@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from 'react';
 
 import addCartItem from '../lib/addCartItem';
+import removeCartItem from '../lib/removeCartItem';
+import deleteCartItem from '../lib/deleteCartItem';
 import calculateCartSum from '../lib/calculateCartSum';
 import calculateBetterPrice from '../lib/calculateBetterPrice';
 import getCommercialOffers from '../api/getCommercialOffers';
@@ -10,6 +12,8 @@ export const CartContext = createContext({
 	setIsCartOpen: () => {},
 	cartItems: [],
 	addItemToCart: () => {},
+	removeItemFromCart: () => {},
+	deleteItemFromCart: () => {},
 	cartCount: 0,
 	cartSum: 0,
 	cartDiscount: 0,
@@ -57,10 +61,22 @@ export const CartProvider = ({ children }) => {
 		setCartItems(newCartItems);
 	};
 
+	const removeItemFromCart = (productToRemove) => {
+		const newCartItems = removeCartItem(cartItems, productToRemove);
+		setCartItems(newCartItems);
+	};
+
+	const deleteItemFromCart = (productToDelete) => {
+		const newCartItems = deleteCartItem(cartItems, productToDelete);
+		setCartItems(newCartItems);
+	};
+
 	const value = {
 		isCartOpen,
 		setIsCartOpen,
 		addItemToCart,
+		removeItemFromCart,
+		deleteItemFromCart,
 		cartItems,
 		cartCount,
 		cartSum,
