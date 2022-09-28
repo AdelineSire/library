@@ -9,6 +9,7 @@ import getCommercialOffers from '../api/getCommercialOffers';
 
 export const CartContext = createContext({
 	cartItems: [],
+	setCartItems: () => {},
 	addItemToCart: () => {},
 	removeItemFromCart: () => {},
 	deleteItemFromCart: () => {},
@@ -73,6 +74,7 @@ export const CartProvider = ({ children }) => {
 		removeItemFromCart,
 		deleteItemFromCart,
 		cartItems,
+		setCartItems,
 		cartCount,
 		cartSum,
 		cartDiscount,

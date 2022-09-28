@@ -2,8 +2,14 @@ import { useContext } from 'react';
 
 import { CartContext } from '../contexts/cart.context';
 
-const CartSummary = () => {
-	const { cartSum, cartDiscount, cartTotal } = useContext(CartContext);
+const CartSummary = ({ setIsModalOpen }) => {
+	const { cartSum, cartDiscount, cartTotal, setCartItems } =
+		useContext(CartContext);
+
+	const handleSubmit = () => {
+		setCartItems([]);
+		setIsModalOpen(true);
+	};
 
 	return (
 		<div className='shadow-xl card w-96 bg-base-100'>
@@ -23,7 +29,10 @@ const CartSummary = () => {
 					</div>
 				</div>
 				<div className='justify-center card-actions'>
-					<button className='mb-4 btn-primary btn btn-xs sm:btn-sm md:btn-md'>
+					<button
+						onClick={handleSubmit}
+						className='mb-4 btn-primary btn btn-xs sm:btn-sm md:btn-md'
+					>
 						Valider mon panier
 					</button>
 				</div>
