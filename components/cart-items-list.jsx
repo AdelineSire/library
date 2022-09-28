@@ -8,7 +8,7 @@ const CartItemsList = () => {
 	const { cartItems } = useContext(CartContext);
 
 	return (
-		<div className='flex flex-col gap-4'>
+		<div className='flex flex-col gap-4 grow'>
 			{cartItems.map((cartItem) => {
 				return <CartItemCard key={cartItem.isbn} cartItem={cartItem} />;
 			})}

@@ -8,8 +8,6 @@ import calculateBetterPrice from '../lib/calculateBetterPrice';
 import getCommercialOffers from '../api/getCommercialOffers';
 
 export const CartContext = createContext({
-	isCartOpen: false,
-	setIsCartOpen: () => {},
 	cartItems: [],
 	addItemToCart: () => {},
 	removeItemFromCart: () => {},
@@ -21,7 +19,6 @@ export const CartContext = createContext({
 });
 
 export const CartProvider = ({ children }) => {
-	const [isCartOpen, setIsCartOpen] = useState(false);
 	const [cartItems, setCartItems] = useState([]);
 	const [cartCount, setCartCount] = useState(0);
 	const [cartSum, setCartSum] = useState(0);
@@ -72,8 +69,6 @@ export const CartProvider = ({ children }) => {
 	};
 
 	const value = {
-		isCartOpen,
-		setIsCartOpen,
 		addItemToCart,
 		removeItemFromCart,
 		deleteItemFromCart,

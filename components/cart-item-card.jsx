@@ -12,7 +12,6 @@ const CartItemCard = ({ cartItem }) => {
 	const { cover, title, quantity, totalPrice } = cartItem;
 
 	const handleIncrease = () => {
-		console.log(cartItem);
 		addItemToCart(cartItem);
 	};
 	const handleDecrease = () => {
@@ -28,19 +27,32 @@ const CartItemCard = ({ cartItem }) => {
 				<Image src={cover} alt={title} width={85} height={125} />
 			</figure>
 			<div className='card-body'>
-				<h2 className='card-title font-title'>{title}</h2>
+				<h2 className='text-base md:text-lg lg:text-xl card-title font-title'>
+					{title}
+				</h2>
 				<div className='flex items-center justify-end gap-8 card-actions'>
-					<span className='font-bold text-neutral'>{totalPrice} €</span>
-					<div className='flex items-center gap-2'>
-						<button onClick={handleDecrease} className='btn btn-xs btn-circle'>
-							<MinusIcon />
-						</button>
-						<span>{quantity}</span>
-						<button onClick={handleIncrease} className='btn btn-xs btn-circle'>
-							<PlusIcon />
-						</button>
+					<div className='flex items-center gap-8'>
+						<span className='font-bold text-neutral'>{totalPrice} €</span>
+						<div className='flex items-center gap-2'>
+							<button
+								onClick={handleDecrease}
+								className='btn btn-xs btn-circle'
+							>
+								<MinusIcon />
+							</button>
+							<span>{quantity}</span>
+							<button
+								onClick={handleIncrease}
+								className='btn btn-xs btn-circle'
+							>
+								<PlusIcon />
+							</button>
+						</div>
 					</div>
-					<button onClick={handleDelete} className='btn btn-secondary btn-sm'>
+					<button
+						onClick={handleDelete}
+						className='btn-secondary btn btn-xs sm:btn-sm'
+					>
 						Supprimer
 					</button>
 				</div>
