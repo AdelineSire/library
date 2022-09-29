@@ -106,9 +106,8 @@ describe('Add item to cart', () => {
 		},
 	];
 
-	const newCartItems = addCartItem(cartItems, productToAdd);
-
 	it('should return an array of objects with all correct keys', () => {
+		const newCartItems = addCartItem(cartItems, productToAdd);
 		expect(newCartItems).toEqual(
 			expect.arrayContaining([
 				expect.objectContaining({
@@ -125,6 +124,7 @@ describe('Add item to cart', () => {
 	});
 
 	it('should add a new item to cart if it does not already exist, with a quantity of one and a total price of the item price', () => {
+		const newCartItems = addCartItem(cartItems, productToAdd);
 		expect.assertions(3);
 		expect(newCartItems[3].isbn).toBe('c8fabf68-8374-48fe-a7ea-a00ccd07afff');
 		expect(newCartItems[3].quantity).toBe(1);
