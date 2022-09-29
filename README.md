@@ -6,4 +6,10 @@
 `yarn build`  
 `yarn start`
 
-See at http://localhost:3000/
+Runs on port 3000
+
+## Technologies
+
+- React and Next.js
+- Tailwind CSS and DaisyUI
+- Jest
