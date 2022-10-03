@@ -1,4 +1,6 @@
-const deleteCartItem = (cartItems, productToDelete) => {
+import { CartItem } from '../interfaces';
+
+const deleteCartItem = (cartItems: CartItem[], productToDelete: CartItem) => {
 	const filteredCartItems = cartItems.filter(
 		(cartItem) => cartItem.isbn !== productToDelete.isbn
 	);

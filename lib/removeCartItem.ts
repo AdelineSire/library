@@ -1,4 +1,6 @@
-const removeCartItem = (cartItems, productToRemove) => {
+import { CartItem } from '../interfaces';
+
+const removeCartItem = (cartItems: CartItem[], productToRemove: CartItem) => {
 	const newCartItems = cartItems.map((cartItem) => {
 		if (cartItem.isbn === productToRemove.isbn) {
 			return {

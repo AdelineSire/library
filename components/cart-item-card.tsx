@@ -6,7 +6,13 @@ import PlusIcon from './icons/plus-icon';
 
 import { CartContext } from '../contexts/cart.context';
 
-const CartItemCard = ({ cartItem }) => {
+import { CartItem } from '../interfaces';
+
+interface Props {
+	cartItem: CartItem;
+}
+
+const CartItemCard = ({ cartItem }: Props) => {
 	const { addItemToCart, removeItemFromCart, deleteItemFromCart } =
 		useContext(CartContext);
 	const { cover, title, quantity, totalPrice } = cartItem;

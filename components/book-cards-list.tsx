@@ -1,6 +1,12 @@
 import BookCard from './book-card';
 
-const BookCardsList = ({ books }) => {
+import { Book } from '../interfaces';
+
+interface Props {
+	books: Book[];
+}
+
+const BookCardsList = ({ books }: Props) => {
 	return (
 		<div className='grid grid-cols-1 gap-8 md:grid-cols-2 '>
 			{books.map((book) => {

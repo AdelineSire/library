@@ -1,8 +1,12 @@
-import { useContext } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 
 import { CartContext } from '../contexts/cart.context';
 
-const CartSummary = ({ setIsModalOpen }) => {
+interface Props {
+	setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const CartSummary = ({ setIsModalOpen }: Props) => {
 	const { cartSum, cartDiscount, cartTotal, setCartItems } =
 		useContext(CartContext);
 

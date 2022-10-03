@@ -7,10 +7,12 @@ import Spinner from '../components/icons/Spinner';
 
 import getBooks from '../api/getBooks';
 
+import { Book } from '../interfaces';
+
 const Home = () => {
 	const [loading, setLoading] = useState(true);
 	const [searchField, setSearchField] = useState('');
-	const [books, setBooks] = useState([]);
+	const [books, setBooks] = useState<Book[]>([]);
 	const [filteredBooks, setFilterBooks] = useState(books);
 
 	useEffect(() => {
@@ -31,7 +33,7 @@ const Home = () => {
 		setFilterBooks(newFilteredBooks);
 	}, [books, searchField]);
 
-	const onSearchChange = (event) => {
+	const onSearchChange = (event: { target: { value: string } }) => {
 		const searchFieldString = event.target.value.toLocaleLowerCase();
 		setSearchField(searchFieldString);
 	};

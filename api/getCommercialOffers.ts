@@ -1,4 +1,4 @@
-const getCommercialOffers = async (isbnList) => {
+const getCommercialOffers = async (isbnList: string) => {
 	const url = `http://henri-potier.xebia.fr/books/${isbnList}/commercialOffers`;
 
 	try {

@@ -1,8 +1,10 @@
+import { AppProps } from 'next/app';
+
 import { CartProvider } from '../contexts/cart.context';
 
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }: AppProps) {
 	return (
 		<CartProvider>
 			<Component {...pageProps} />
@@ -10,4 +12,4 @@ function MyApp({ Component, pageProps }) {
 	);
 }
 
-export default MyApp;
+export default App;

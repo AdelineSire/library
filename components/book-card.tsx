@@ -4,14 +4,20 @@ import Image from 'next/future/image';
 
 import { CartContext } from '../contexts/cart.context';
 
-const BookCard = ({ book }) => {
+import { Book, CartItem } from '../interfaces';
+
+interface Props {
+	book: Book;
+}
+
+const BookCard = ({ book }: Props) => {
 	const { addItemToCart } = useContext(CartContext);
 
 	const { isbn, title, price, cover, synopsis } = book;
 	const alt = 'Couverture du livre ' + title;
 	const truncatedSynopsis = synopsis[0].slice(0, 132) + ' ...';
 
-	const addProductToCart = () => addItemToCart(book);
+	const addProductToCart = () => addItemToCart(book as CartItem);
 
 	return (
 		<div className='shadow-xl card lg:card-side bg-base-100'>

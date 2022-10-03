@@ -1,6 +1,15 @@
 import SearchIcon from './icons/search-icon';
 
-const SearchBox = ({ placeholder, onChangeHandler }) => {
+interface Props {
+	placeholder: string;
+	onChangeHandler: (event: {
+		target: {
+			value: string;
+		};
+	}) => void;
+}
+
+const SearchBox = ({ placeholder, onChangeHandler }: Props) => {
 	return (
 		<div className='my-8 form-control'>
 			<div className='input-group'>

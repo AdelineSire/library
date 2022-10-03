@@ -2,7 +2,9 @@ import calculatePriceWithPercentageDiscount from './calculatePriceWithPercentage
 import calculatePriceWithMinusDiscount from './calculatePriceWithMinusDiscount';
 import calculatePriceWithSliceDiscount from './calculatePriceWithSliceDiscount';
 
-const calculateBetterPrice = (cartSum, offers) => {
+import { Offer } from '../interfaces';
+
+const calculateBetterPrice = (cartSum: number, offers: Offer[]) => {
 	const totals = offers.map((offer) => {
 		if (offer.type === 'percentage') {
 			return calculatePriceWithPercentageDiscount(cartSum, offer.value);
@@ -19,7 +21,10 @@ const calculateBetterPrice = (cartSum, offers) => {
 		}
 	});
 
-	const result = Math.min(...totals);
+	const filteredTotals = totals.filter(
+		(total) => typeof total === 'number'
+	) as number[];
+	const result = Math.min(...filteredTotals);
 
 	return result;
 };

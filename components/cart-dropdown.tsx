@@ -6,7 +6,8 @@ import ShoppingBagIcon from './icons/shopping-bag-icon';
 import { CartContext } from '../contexts/cart.context';
 
 const CartDropdown = () => {
-	const { cartCount } = useContext(CartContext);
+	const context = useContext(CartContext);
+	const cartCount = context.cartCount;
 	const router = useRouter();
 	const cartCountLabel = cartCount > 1 ? 'Articles' : 'Article';
 

@@ -1,4 +1,6 @@
-const addCartItem = (cartItems, productToAdd) => {
+import { CartItem } from '../interfaces';
+
+const addCartItem = (cartItems: CartItem[], productToAdd: CartItem) => {
 	// Find if cartItems contains productToAdd
 	const existingCartItem = cartItems.find(
 		(cartItem) => cartItem.isbn === productToAdd.isbn
